@@ -24,6 +24,7 @@ $Path = $Path -replace "^~", $HOME
 $Path = $Path -replace "\\", "/"
 $Dotfiles = $PSScriptRoot
 $Destination = "$Dotfiles\registered$Suffix.txt"
+$RelativePath = $Path -replace [regex]::Escape("$HOME\"), ""
 
 function Register {
     param (
@@ -72,4 +73,4 @@ function Register {
 Register -Path $Path
 
 git.exe -C "$Dotfiles" add "$Destination"
-git.exe -C "$Dotfiles" commit -m "Register $Path"
+git.exe -C "$Dotfiles" commit -m "Register $RelativePath"
