@@ -31,6 +31,12 @@ if (-not (Test-Path $Path)) {
 
 # The filename relative to $HOME
 $RelativePath = $Path -replace [regex]::Escape("$HOME\"), ""
+# If user used "~", replace it
+$RelativePath = $RelativePath -replace "^~\\", ""
+$RelativePath = $RelativePath -replace "^~/", ""
+
+# NOTE: Normalize to "/"
+$RelativePath = $RelativePath -replace "\\", "/"
 
 # NOTE: Skip the file if it's already registered
 if (Select-String -Path $Destination -Pattern "^$RelativePath$") {
