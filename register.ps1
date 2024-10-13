@@ -21,10 +21,10 @@ param (
 )
 
 $Path = $Path -replace "^~", $HOME
-$Path = $Path -replace "\\", "/"
+$RelativePath = $Path -replace [regex]::Escape("$HOME\"), ""
+$RelativePath = $RelativePath -replace "\\", "/"
 $Dotfiles = $PSScriptRoot
 $Destination = "$Dotfiles\registered$Suffix.txt"
-$RelativePath = $Path -replace [regex]::Escape("$HOME\"), ""
 
 function Register {
     param (
