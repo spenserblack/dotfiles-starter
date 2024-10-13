@@ -47,6 +47,6 @@ if (Select-String -Path $Destination -Pattern "^$RelativePath$") {
 # NOTE: Since Windows doesn't usually have symlinks, we'll just copy the file
 Copy-Item -Path "$Path" -Destination "$Dotfiles/$RelativePath"
 Add-Content -Path "$Destination" -Value "$RelativePath"
-Get-Content -Path "$Destination" | Sort-Object -InputObject "$Destination" | Set-Content -Path "$Destination"
+Get-Content -Path "$Destination" | Sort-Object | Set-Content -Path "$Destination"
 git.exe -C "$Dotfiles" add "$Dotfiles/$RelativePath" "$Destination"
 git.exe -C "$Dotfiles" commit -m "Register $RelativePath"
