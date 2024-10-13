@@ -29,6 +29,8 @@ function Register {
         [string]$Path
     )
 
+    $Path = $Path -replace "^~", $HOME
+
     # If $Path is a directory, call Register for each file in the directory
     if (Test-Path -Path $Path -PathType Container) {
         Get-ChildItem -Path $Path -File | ForEach-Object {
@@ -44,9 +46,6 @@ function Register {
 
     # The filename relative to $HOME
     $RelativePath = $Path -replace [regex]::Escape("$HOME\"), ""
-    # If user used "~", replace it
-    $RelativePath = $RelativePath -replace "^~\\", ""
-    $RelativePath = $RelativePath -replace "^~/", ""
 
     # NOTE: Normalize to "/"
     $RelativePath = $RelativePath -replace "\\", "/"
