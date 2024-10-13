@@ -65,4 +65,4 @@ function Register {
     git.exe -C "$Dotfiles" commit -m "Register $RelativePath"
 }
 
-Register -Path $Path -Suffix $Suffix
+Register -Path $Path
