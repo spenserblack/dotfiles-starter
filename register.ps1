@@ -60,8 +60,9 @@ function Register {
     Copy-Item -Path "$Path" -Destination "$Dotfiles/$RelativePath"
     Add-Content -Path "$Destination" -Value "$RelativePath"
     Get-Content -Path "$Destination" | Sort-Object | Set-Content -Path "$Destination"
-    git.exe -C "$Dotfiles" add "$Dotfiles/$RelativePath" "$Destination"
-    git.exe -C "$Dotfiles" commit -m "Register $RelativePath"
 }
 
 Register -Path $Path
+
+git.exe -C "$Dotfiles" add "$Dotfiles/$RelativePath" "$Destination"
+git.exe -C "$Dotfiles" commit -m "Register $RelativePath"
