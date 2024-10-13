@@ -57,7 +57,7 @@ function Register {
     }
 
     # NOTE: Since Windows doesn't usually have symlinks, we'll just copy the file
-    Copy-Item -Path "$Path" -Destination "$Dotfiles/$RelativePath"
+    Copy-Item -Recurse -Path "$Path" -Destination "$Dotfiles/$RelativePath"
     Add-Content -Path "$Destination" -Value "$RelativePath"
     Get-Content -Path "$Destination" | Sort-Object | Set-Content -Path "$Destination"
     git.exe -C "$Dotfiles" add "$Dotfiles/$RelativePath"
