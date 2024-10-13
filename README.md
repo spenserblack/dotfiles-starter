@@ -35,6 +35,9 @@ repository. Then, there are a few ways to "install" these scripts. They include
 - Adding your repository to `$PATH`
 - Making aliases or symlinks (`ln -s path/to/dotfiles/register.sh ~/.local/bin/dotfiles-register`)
 
+Also, feel free to modify any of the scripts or this `README.md` once you've cloned
+your new dotfiles repository. It is, after all, your repository.
+
 On Windows, the implementation is done by batch files (the `*.cmd` files) calling
 PowerShell scripts (the `*.ps1` files). Unfortunately, this may result in the
 PowerShell scripts not getting called due to an execution policy error. Read the error
