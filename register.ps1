@@ -20,6 +20,8 @@ param (
     [string]$Suffix = ""
 )
 
+$Path = $Path -replace "^~", $HOME
+$Path = $Path -replace "\\", "/"
 $Dotfiles = $PSScriptRoot
 $Destination = "$Dotfiles\registered$Suffix.txt"
 
