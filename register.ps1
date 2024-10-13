@@ -57,6 +57,10 @@ function Register {
     }
 
     # NOTE: Since Windows doesn't usually have symlinks, we'll just copy the file
+    $Folder = Split-Path -Path "$Dotfiles/$RelativePath" -Parent
+    if (-not (Test-Path -Path $Folder)) {
+        New-Item -ItemType Directory -Path $Folder
+    }
     Copy-Item -Recurse -Path "$Path" -Destination "$Dotfiles/$RelativePath"
     Add-Content -Path "$Destination" -Value "$RelativePath"
     Get-Content -Path "$Destination" | Sort-Object | Set-Content -Path "$Destination"
