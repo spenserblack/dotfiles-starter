@@ -33,7 +33,7 @@ function Register {
 
     # If $Path is a directory, call Register for each file in the directory
     if (Test-Path -Path $Path -PathType Container) {
-        Get-ChildItem -Path $Path -File | ForEach-Object {
+        Get-ChildItem -Path $Path | ForEach-Object {
             Register -Path $_.FullName
         }
         return
