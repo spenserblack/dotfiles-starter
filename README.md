@@ -3,7 +3,7 @@
 This template helps create a dotfiles repository. There are many ways to create a
 dotfiles repository, but the way this one works is by having a "bootstrap" script that
 will add *registered* files from this repository to your home directory. Files are
-registered if they are in either `registered.txt` or `registered-OS.txt`, where `OS`
+registered if they are in either `registered/` or `registered-OS/`, where `OS`
 is your operating system. This prevents files in this repository that *aren't* part of
 your tracked dotfiles from being added.
 
