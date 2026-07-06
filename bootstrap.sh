@@ -21,7 +21,7 @@ done
 create_symlinks() {
 	DOTFILES_PATH="$1"
 	for FILENAME in $(find "$DOTFILES_PATH" -type f); do
-		# SNOTE: kip .gitkeep file
+		# NOTE: keep .gitkeep file
 		if [ "$(basename "$FILENAME")" = ".gitkeep" ]; then
 			continue
 		fi
